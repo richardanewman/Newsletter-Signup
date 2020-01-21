@@ -1,9 +1,9 @@
 //jshint esversion: 6
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const option = require("option");
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -35,7 +35,7 @@ app.post("/", function(req, res){
 
   var jsonData = JSON.stringify(data);
 
-  var option = {
+  option.use({
     url: process.env.CLIENT_URL,
     method: "POST",
     headers: {
@@ -43,7 +43,7 @@ app.post("/", function(req, res){
     },
     body: jsonData
 
-  };
+  });
 
   request(option, function(error, response, body){
     if(error) {
