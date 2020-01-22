@@ -43,7 +43,7 @@ app.post("/", function(req, res){
     url: process.env.CLIENT_URL,
     method: "POST",
     headers: {
-      "Authorization": process.env.CLIENT_SECRET
+      "Authorization": "apikey " + process.env.CLIENT_SECRET
     },
     body: jsonData
 
