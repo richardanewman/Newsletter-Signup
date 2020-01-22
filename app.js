@@ -5,6 +5,11 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const app = express();
 
+
+
+
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
@@ -35,10 +40,10 @@ app.post("/", function(req, res){
   var jsonData = JSON.stringify(data);
 
   var option = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/4b5a1757d4",
+    url: process.env.CLIENT_URL,
     method: "POST",
     headers: {
-      "Authorization": "41a8454f3efbd78c8e190381ffd00b3e-us20"
+      "Authorization": process.env.CLIENT_SECRET
     },
     body: jsonData
 
